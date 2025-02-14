@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>For Nafisa Ahsan</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Indie+Flower&display=swap');
+        body {
+            background: linear-gradient(to right, #ff758c, #ff7eb3);
+            text-align: center;
+            font-family: 'Indie Flower', cursive;
+            padding: 50px;
+            color: #4A235A;
+            transition: background 2s ease-in-out; /* Slower transition speed */
+        }
+        .notebook {
+            position: relative;
+            width: 350px; /* Reduced initial size */
+            height: 450px; /* Reduced initial size */
+            margin: auto;
+            perspective: 1200px;
+            transition: transform 2s ease-in-out; /* Slower transition */
+        }
+        .page {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: #fff;
+            border-radius: 10px;
+            box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.2);
+            transform-origin: left center;
+            transition: transform 2s ease-in-out;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            overflow: hidden; /* Prevent text overflow */
+            box-sizing: border-box;
+        }
+        .front-page {
+            background: #fff;
+            font-size: 2em;
+            color: #4A235A;
+            font-weight: bold;
+            transform: rotateY(0deg);
+        }
+        .front-page span {
+            display: block;
+        }
+        .front-page .name {
+            font-weight: bolder;
+            font-size: 1.5em;
+        }
+        .poem-page {
+            font-size: 1.2em; /* Reduced font size for better fit */
+            color: #4A235A;
+            opacity: 0;
+            transition: opacity 2s ease-in-out; /* Smooth 2s transition */
+            background: #fff;
+            text-align: center;
+            position: relative;
+            padding: 15px;
+            overflow-y: auto; /* Allow scrolling if necessary */
+        }
+        .poem-page p {
+            margin: 5px 0;
+        }
+        .poem-page p:last-child {
+            position: absolute;
+            right: 10px; /* Adjusted position */
+            bottom: 10px;
+            font-weight: bold;
+        }
+        .notebook:hover {
+            transform: rotate(-10deg) scale(1.2); /* Enlarged a bit more */
+        }
+        .notebook:hover .front-page {
+            transform: rotateY(-120deg);
+        }
+        .notebook:hover .poem-page {
+            opacity: 1;
+        }
+        body.poem-open {
+            background: linear-gradient(to right, #ff758c, #c70039); /* Smooth transition to elegant red rose */
+            transition: background 2s ease-in-out; /* Slower transition synchronized with book opening */
+        }
+    </style>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const notebook = document.querySelector(".notebook");
+
+            // Create the audio element for the page opening sound
+            const pageOpenSound = new Audio("sound.mp3"); // Make sure the sound file is in the same folder
+            
+            notebook.addEventListener("mouseover", function() {
+                document.body.classList.add("poem-open");
+
+                // Play the sound with a delay to match the transition time
+                pageOpenSound.play();
+            });
+
+            notebook.addEventListener("mouseleave", function() {
+                document.body.classList.remove("poem-open");
+            });
+        });
+    </script>
+</head>
+<body>
+    <div class="notebook">
+        <div class="page front-page">
+            <span>To My Beloved</span>
+            <span class="name">Nafisa Ahsan</span>
+        </div>
+        <div class="page poem-page">
+            <p><strong>12/09/2024</strong> - The day our journey began ❤️</p>
+            <p>From the moment our eyes met,<br>
+               The stars whispered, fate was set.<br>
+               Your smile, a light so divine,<br>
+               In your love, I found the sign.</p>
+            <p>Through every laugh, through every tear,<br>
+               I'll hold you close, forever near.<br>
+               My heart is yours, pure and true,<br>
+               Nafisa, my love, I’d die for you. ❤️</p>
+            <p><strong>Happy Valentine's Day! ❤️</strong></p>
+        </div>
+    </div>
+</body>
+</html>
